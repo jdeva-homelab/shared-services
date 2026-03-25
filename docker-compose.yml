@@ -1,0 +1,14 @@
+services:
+  shared-valkey:
+    container_name: shared_valkey
+    image: valkey/valkey:9-alpine
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - valkey-net
+
+networks:
+  valkey-net:
+    name: valkey-net
+    driver: bridge
