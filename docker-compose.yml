@@ -5,8 +5,12 @@ services:
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    environment:
+      - TZ=${TZ}
     networks:
       - valkey-net
+    volumes:
+      - ${VALKEY_DATA_LOCATION}:/data
 
 networks:
   valkey-net:
